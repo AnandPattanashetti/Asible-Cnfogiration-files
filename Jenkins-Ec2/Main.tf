@@ -1,13 +1,13 @@
 resource "aws_instance" "web" {
   ami                    = "ami-01bef798938b7644d"
-  instance_type          = "t2.large"
+  instance_type          = "t2.medium"
   key_name               = "Jenkins"
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
    user_data              = templatefile("./install.sh", {})
 
 
   tags = {
-    Name = "jenkins/sg"
+    Name = "jenkins-sg-gitlab"
   }
 
   root_block_device {
@@ -15,8 +15,8 @@ resource "aws_instance" "web" {
   }
 }
 
-resource "aws_security_group" "jenkins_sg" {
-  name        = "jenkins_sg"
+resource "aws_security_group" "jenkins-sg-gitlab" {
+  name        = "jenkins-sg-gitlab"
   description = "Allow TLS inbound traffic"
 
   ingress = [
@@ -41,7 +41,7 @@ resource "aws_security_group" "jenkins_sg" {
   }
 
   tags = {
-    Name = "jenkins_sg"
+    Name = "jenkins-sg-gitlab"
   }
 
 
