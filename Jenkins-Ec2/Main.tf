@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
   ami                    = "ami-01bef798938b7644d"
   instance_type          = "t2.medium"
   key_name               = "Jenkins"
-  vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
+  vpc_security_group_ids = [aws_security_group.jenkins-sg-gitlab.id]
    user_data              = templatefile("./install.sh", {})
 
 
