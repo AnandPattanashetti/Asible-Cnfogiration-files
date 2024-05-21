@@ -11,7 +11,7 @@ pipeline {
         }
         stage('checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aj7Ay/ANSIBLE.git'
+                git branch: 'main', url: 'https://github.com/AnandPattanashetti/Asible-Cnfogiration-files.git'
             }
         }
         stage('TRIVY FS SCAN') {
